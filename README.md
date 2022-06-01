@@ -4,7 +4,7 @@
 
 ### 💻 Projeto
 
-- Nesta aplicação está sendo feita uma API, que é possível cadastrar `usuário com (username, uservatar)`, a aplicação gera um `user_id` único randômico para o usúario, também é possível cadastrar `times de futebol com (nome, cidade e pais)`,a aplicação gera um `team_id` único randômico para o time, desde que exista um `usuário` já cadastrado para poder fazer o cadastro dos times, essa verificação é feita pelo `user_id` do usuário, também é possível listar todos usuários criados, e seus respectivos times cadastrados .....
+- Nesta aplicação está sendo feita uma API, que é possível cadastrar `usuário com (username, userAvatar)`, a aplicação gera um `user_id` único randômico para o usúario, também é possível cadastrar `times de futebol com (nome, cidade e pais)`,a aplicação gera um `team_id` único randômico para o time, desde que exista um `usuário` já cadastrado para poder fazer o cadastro dos times, essa verificação é feita pelo `user_id` do usuário, também é possível listar todos usuários criados, e seus respectivos times cadastrados .....
 
 ### Rotas da aplicação
 
@@ -26,7 +26,7 @@
 
 "team": {
 	"team_id": "",
-	"team": "",
+	"teamName": "",
 	"city": "",
 	"country": "",
 	"created_at": ""
