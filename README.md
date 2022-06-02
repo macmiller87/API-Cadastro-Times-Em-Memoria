@@ -1,4 +1,4 @@
-## API de cadastro de usuários e Times em memória.
+## API de cadastro de Usuários e Times em memória.
 
 ## Está em desenvolvimento ... 🚀
 
@@ -8,7 +8,7 @@
 
 ### Rotas da aplicação
 
-#### Post - `/createUser` 
+#### CreateUsers.routes: Post - `/createUser` 
 
 - A rota deve receber `username` e `userAvatar` dentro do corpo da requisição. Ao cadastrar um novo usuário, ele deve ser armazenado dentro de um objeto no seguinte formato:   
 
@@ -20,7 +20,7 @@
 	"userTeams": []
 }
 
-#### Post - `/createUserTeam/:user_id`
+#### CreateUsersTeams.routes: Post - `/createUserTeam/:user_id`
 
 - A rota deve receber `teamName`, `city` e `country` dentro do corpo da requisição e, uma propriedade `user_id` contendo o `id` do usuário dentro do header da requisição. Ao criar um novo Time, ele deve ser armazenada dentro da lista `userTeams` do usuário que está cadastrando essa time, Certifique-se que o ID seja um UUID, cada tarefa deverá estar no seguinte formato:
 
@@ -32,6 +32,6 @@
 	"created_at": ""
 }
 
-#### Get - `/listUsersAndTeams/:user_id`
+#### ListUsersAndTeams.routes: Get - `/listUsersAndTeams/:user_id`
 
 - A rota deve receber, pelo header da requisição, uma propriedade `user_id` contendo o `id` do usuário e retornar uma lista com todos os dados do usuário e todos os times cadastrados desse usuário.
