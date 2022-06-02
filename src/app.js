@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 
-const createUsersRoute = require("./routes/createUsers.routes.js");
+const createUsersRoute = require("./routes/CreateUsers.routes.js");
 const createUsersTeamsRoute = require("./routes/CreateUsersTeams.routes.js");
-const listUsersAndTeams = require("./routes/ListUsersAndTeams.routes.js");
+const listUsersAndTeamsRoute = require("./routes/ListUsersAndTeams.routes.js");
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(createUsersRoute);
 app.use(createUsersTeamsRoute);
-app.use(listUsersAndTeams);
+app.use(listUsersAndTeamsRoute);
 
 module.exports = app; 
 
