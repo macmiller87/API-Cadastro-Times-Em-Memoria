@@ -17,7 +17,7 @@ createUsersRoute.post("/createUser", (request, response) => {
             username,
             userAvatar,
             created_at: new Date().toUTCString(),
-            userTeams: []
+            // userTeams: []
         }
 
         arrayallUsers.push(user);

@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const arrayallUsers = require("./ArrayUsers.js");
+const arrayUserTeams = require("./ArrayUserTeam.js");
 
 const listUsersAndTeams = Router();
 
@@ -15,7 +16,8 @@ listUsersAndTeams.get("/listUsersAndTeams/:user_id", (request, response) => {
     } else {
         
         return response.json({
-            body: arrayallUsers
+            user: arrayallUsers,
+            teams: arrayUserTeams
         });
     }
 });
