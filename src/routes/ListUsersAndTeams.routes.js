@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const arrayallUsers = require("./ArrayUsers.js");
-const arrayUserTeams = require("./ArrayUserTeam.js");
+const arrayallUsers = require("../utils/arrays/ArrayUsers.js");
+const arrayUserTeams = require("../utils/arrays/ArrayUserTeam.js");
 
 const listUsersAndTeams = Router();
 

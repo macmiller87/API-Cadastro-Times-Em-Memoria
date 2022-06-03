@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { v4: uuidV4 } = require("uuid");
-const arrayallUsers = require("./ArrayUsers.js");
+const arrayallUsers = require("../utils/arrays/ArrayUsers.js");
 
 const createUsersRoute = Router();
 
