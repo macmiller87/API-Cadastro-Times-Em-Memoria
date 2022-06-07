@@ -34,7 +34,8 @@ describe("List Users and Teams", () => {
         });
 
         await request(app)
-        .get(`/listUsersAndTeams/${user.body.user.fake_id}`);  
+        .get(`/listUsersAndTeams/${user.body.user.fake_id}`)
+        .expect(404);  
     });
 
 });
