@@ -6,9 +6,9 @@ const createUsersRoute = Router();
 
 createUsersRoute.post("/createUser", (request, response) => {
         
-    const { username, userAvatar, user_id  } = request.body;
+    const { username, userAvatar } = request.body;
 
-    const userIdAlreadyExists = arrayallUsers.find((userId) => userId.user_id === user_id);
+    const userIdAlreadyExists = arrayallUsers.find((user) => user.username === username);
 
     if(!userIdAlreadyExists) {
         
