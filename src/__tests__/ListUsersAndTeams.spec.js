@@ -16,8 +16,7 @@ describe("List Users and Teams", () => {
             country: "Espanha"
         });
 
-        await request(app)
-        .get(`/listUsersAndTeams/${user.body.user.user_id}`);  
+        await request(app).get(`/listUsersAndTeams/${user.body.user.user_id}`);  
     });
 
     it("Should not be able to list User and Teams if the 'user_id' of the registered User is not the same", async () => {
@@ -30,12 +29,14 @@ describe("List Users and Teams", () => {
         await request(app).post(`/createUserTeam/${user.body.user.user_id}`).send({
             teamName: "Juventus F. C.",
             city: "Napoli",
-            country: "Espanha"
+            country: "Italia"
         });
 
-        await request(app)
+        const listUserAndTeam = await request(app)
         .get(`/listUsersAndTeams/${user.body.user.fake_id}`)
-        .expect(404);  
+        .expect(404);
+        
+        expect(listUserAndTeam.body).toStrictEqual({ message: "User Not Found !" });
     });
 
 });

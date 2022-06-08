@@ -14,7 +14,7 @@ deleteSpecificUserTeam.delete("/deleteSpecificTeam/:user_id", (request, response
 
     if(!userId) {
 
-        return response.status(404).json({ message: "User Not Fund !" });
+        return response.status(404).json({ message: "User Not Found !" });
 
     }else if(teamId === -1) {
 

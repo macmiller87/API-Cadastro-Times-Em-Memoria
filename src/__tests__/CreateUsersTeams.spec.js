@@ -27,11 +27,15 @@ describe("Create Users Teams", () => {
             userAvatar: "Tesouro"
         });
 
-        await request(app).post(`/createUserTeam/${user.body.user.fake_id}`).send({
+        const listUserTeam =  await request(app)
+        .post(`/createUserTeam/${user.body.user.fake_id}`)
+        .send({
             teamName: "F. C. Barcelona",
             city: "Barcelona",
             country: "Espanha"
         }).expect(404);
+
+        expect(listUserTeam.body).toStrictEqual({ message: "User Not Found!" });
     });
 
 });
