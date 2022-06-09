@@ -1,5 +1,7 @@
 ## API de cadastro de Usuários e Times em memória.
 
+#### Está em desenvolvimento 🚀
+
 ### 💻 Projeto
 
 - Nesta aplicação está sendo feita uma API, que é possível cadastrar `usuário com (username, userAvatar)`, a aplicação gera um `user_id` único randômico para o usúario, também é possível cadastrar `times de futebol com (nome, cidade e pais)`,a aplicação gera um `team_id` único randômico para o time, desde que exista um `usuário` já cadastrado para poder fazer o cadastro dos times, essa verificação é feita pelo `user_id` do usuário, também é possível listar todos usuários criados, e seus respectivos times cadastrados .....
@@ -16,12 +18,11 @@
 	"username": "",
 	"userAvatar": "",
 	"created_at": "",
-	"userTeams": []
 }
 
 #### CreateUsersTeams.routes: Post - `/createUserTeam/:user_id`
 
-- A rota deve receber `teamName`, `city` e `country` dentro do corpo da requisição e, uma propriedade `user_id` contendo o `id` do usuário dentro do header da requisição. Ao criar um novo Time, ele deve ser armazenada dentro da lista `userTeams` do usuário que está cadastrando essa time, Certifique-se que o ID seja um UUID, cada tarefa deverá estar no seguinte formato:
+- A rota deve receber `teamName`, `city` e `country` dentro do corpo da requisição e, uma propriedade `user_id` contendo o `id` do usuário dentro do header da requisição. Ao criar um novo Time, ele deve ser armazenada dentro do array `userTeams` do usuário que está cadastrando esse time, Certifique-se que o ID seja um UUID, cada tarefa deverá estar no seguinte formato:
 
 "team": {
 	"team_id": "",
@@ -50,3 +51,4 @@
 - Com o `Nodejs` e o `Yarn` instalados, Na sua IDE preferida, abra o terminal do `git`, e execute o seguinte comando => `yarn`, para baixar as dependências da aplicação.
 - Para rodar o projeto execute o seguinte comando => `yarn dev`.
 - Para testar o funcional da aplicação será necessário instalar o software `Insomnia` e criar as rotas da aplicação citadas acima.
+- Para rodar os testes integrados das rotas da aplicação execute o seguinte comando => `yarn test`.
