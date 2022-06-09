@@ -16,10 +16,6 @@ describe("Delete Specif User Team", () => {
             country: "Inglaterra"
         });
 
-        await request(app).get(`/listUserSpecifTeam/${user.body.user.user_id}`).send({
-            team_id: userTeam.body.teams.team_id
-        })
-
         const deleteUserSpecificTeam = await request(app)
         .delete(`/deleteSpecificTeam/${user.body.user.user_id}`)
         .send({
@@ -42,10 +38,6 @@ describe("Delete Specif User Team", () => {
             country: "Espanha"
         });
 
-        await request(app).get(`/listUserSpecifTeam/${user.body.user.user_id}`).send({
-            team_id: userTeam.body.teams.team_id
-        })
-
         const deleteUserSpecificTeam = await request(app)
         .delete(`/deleteSpecificTeam/${user.body.user.Fake_id}`)
         .send({
@@ -67,10 +59,6 @@ describe("Delete Specif User Team", () => {
             city: "Madri",
             country: "Espanha"
         });
-
-        await request(app).get(`/listUserSpecifTeam/${user.body.user.user_id}`).send({
-            team_id: userTeam.body.teams.team_id
-        })
 
         const deleteUserSpecificTeam = await request(app)
         .delete(`/deleteSpecificTeam/${user.body.user.user_id}`)
