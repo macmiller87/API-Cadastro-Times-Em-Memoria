@@ -1,0 +1,50 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API-Cadastro-Times-Em-Memoria Documentation",
+        "description": "This is an API-Cadastro-Times-Em-Memoria",
+        "version": "1.0.0",
+        "contact": {
+            "email": "macamagolf@gmail.com"
+        }
+    },
+    "paths": {
+        "/createUser": {
+            "post": {
+                "tags": ["Create"],
+                "summary": "Create User",
+                "description": "Create a New User",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "userAvatar": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "username": "username sample",
+                                "userAvatar": "useravatar sample"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User Create With Sucess !"
+                    },
+                    "404": {
+                        "description": "User Already Exists !"
+                    }
+                }
+            }
+        }
+    }
+
+}
