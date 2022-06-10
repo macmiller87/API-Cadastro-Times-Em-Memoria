@@ -11,23 +11,31 @@
     "paths": {
         "/createUser": {
             "post": {
-                "tags": ["Create"],
+                "tags": ["Create User"],
                 "summary": "Create User",
                 "description": "Create a New User",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "type": "object",
                                 "properties": {
+                                    "user_id": {
+                                        "type": "string"
+                                    },
                                     "username": {
                                         "type": "string"
                                     },
                                     "userAvatar": {
                                         "type": "string"
+                                    },
+                                    "created_at": {
+                                        "type": "string" 
                                     }
                                 }
                             },
+                            "description": "Mandatory fields for creating a user.",
                             "example": {
                                 "username": "username sample",
                                 "userAvatar": "useravatar sample"
@@ -37,14 +45,249 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "User Create With Sucess !"
+                        "description": "User Create With Sucess !",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "user": [
+                                                {
+                                                    "user_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "username": {
+                                                        "type": "string"
+                                                    },
+                                                    "userAvatar": {
+                                                        "type": "string"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "user": [
+                                            {
+                                                "user_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
+                                                "username": "username sample",
+                                                "userAvatar": "useravatar sample",
+                                                "created_at": "Thu, 09 Jun 2022 22:20:26 GMT"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
                     },
                     "404": {
                         "description": "User Already Exists !"
                     }
                 }
             }
-        }
+        },
+        "/createUserTeam/{user_id}": {
+            "post": {
+                "tags": ["Create User Team"],
+                "summary":"Create Team",
+                "description": "Create a New Team",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "team_id": {
+                                        "type": "string"
+                                    },
+                                    "TeamName": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    },
+                                    "created_at": {
+                                        "type": "string" 
+                                    }
+                                }
+                            },
+                            "description": "Mandatory fields for creating a user.",
+                            "example": {
+                                "teamName": "teamname sample",
+                                "city": "city sample",
+                                "country": "country sample"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created With Success!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "user_id": {
+                                                "type": "string"
+                                            },
+                                            "teams": [
+                                                {
+                                                    "team_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "teamName": {
+                                                        "type": "string"
+                                                    },
+                                                    "city": {
+                                                        "type": "string"
+                                                    },
+                                                    "country": {
+                                                        "type": "string"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "user_id": "1368c05f-e24d-4920-bf9c-cc9e9ad5f60a",
+                                        "teams": [
+                                            {
+                                                "team_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
+                                                "teamName": "teamname sample",
+                                                "city": "city sample",
+                                                "country": "country sample",
+                                                "created_at": "Thu, 09 Jun 2022 22:20:26 GMT"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User Not Found!"
+                    }
+                }
+            }
+        },
+        "/listUsersAndTeams/{user_id}": {
+            "get": {
+                "tags": ["List Users and Teams"],
+                "summary": "Return all Users and Teams",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": [
+                                            {
+                                                "user_id": {
+                                                    "type": "string"
+                                                },
+                                                "username": {
+                                                    "type": "string"
+                                                },
+                                                "userAvatar": {
+                                                    "type": "string"
+                                                },
+                                                "created_at": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        ],
+                                        "teams": [
+                                            {
+                                                "team_id": {
+                                                    "type": "string"
+                                                },
+                                                "TeamName": {
+                                                    "type": "string"
+                                                },
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "country": {
+                                                    "type": "string"
+                                                },
+                                                "created_at": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "user": [
+                                            {
+                                                "user_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
+                                                "username": "username sample",
+                                                "userAvatar": "useravatar sample",
+                                                "created_at": "Thu, 09 Jun 2022 22:20:26 GMT"
+                                            }
+                                        ],
+                                        "teams": [
+                                            {
+                                                "team_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
+                                                "teamName": "teamname sample",
+                                                "city": "city sample",
+                                                "country": "country sample",
+                                                "created_at": "Thu, 09 Jun 2022 22:20:26 GMT"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User Not Found!"
+                    }
+                }
+            }
+        }   
     }
-
 }
