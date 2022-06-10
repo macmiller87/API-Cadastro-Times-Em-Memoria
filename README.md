@@ -52,3 +52,7 @@
 - Para rodar o projeto execute o seguinte comando => `yarn dev`.
 - Para testar o funcional da aplicação será necessário instalar o software `Insomnia` e criar as rotas da aplicação citadas acima.
 - Para rodar os testes integrados das rotas da aplicação execute o seguinte comando => `yarn test`.
+
+## Para rodar a Documentação da Aplicação
+
+- Com a aplicação já startada ... No seu navegador de internet digite => `http://localhost:8080/api-doc`
