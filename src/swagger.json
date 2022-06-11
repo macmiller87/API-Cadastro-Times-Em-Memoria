@@ -35,7 +35,7 @@
                                     }
                                 }
                             },
-                            "description": "Mandatory fields for creating a user.",
+                            "description": "Mandatory fields for creating a User.",
                             "example": {
                                 "username": "username sample",
                                 "userAvatar": "useravatar sample"
@@ -76,7 +76,7 @@
                                     {
                                         "user": [
                                             {
-                                                "user_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
+                                                "user_id": "bb16df2b-462a-483e-8257-f82924a19dea",
                                                 "username": "username sample",
                                                 "userAvatar": "useravatar sample",
                                                 "created_at": "Thu, 09 Jun 2022 22:20:26 GMT"
@@ -133,7 +133,7 @@
                                     }
                                 }
                             },
-                            "description": "Mandatory fields for creating a user.",
+                            "description": "Mandatory fields for creating a Team.",
                             "example": {
                                 "teamName": "teamname sample",
                                 "city": "city sample",
@@ -179,7 +179,7 @@
                                 },
                                 "example": [
                                     {
-                                        "user_id": "1368c05f-e24d-4920-bf9c-cc9e9ad5f60a",
+                                        "user_id": "096584b5-b624-43fc-ba5e-98696f579b19",
                                         "teams": [
                                             {
                                                 "team_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
@@ -263,7 +263,7 @@
                                     {
                                         "user": [
                                             {
-                                                "user_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
+                                                "user_id": "86e0aa14-442c-4278-ad11-55abf62fc085",
                                                 "username": "username sample",
                                                 "userAvatar": "useravatar sample",
                                                 "created_at": "Thu, 09 Jun 2022 22:20:26 GMT"
@@ -271,7 +271,7 @@
                                         ],
                                         "teams": [
                                             {
-                                                "team_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
+                                                "team_id": "94a6e3e0-f8e6-4426-ba80-1cbf115da7c1",
                                                 "teamName": "teamname sample",
                                                 "city": "city sample",
                                                 "country": "country sample",
@@ -288,6 +288,124 @@
                     }
                 }
             }
-        }   
+        },
+        "/listUserSpecifTeam/{team_id}": {
+            "get": {
+                "tags": ["List Specific Team"],
+                "summary": "Return a Specific Team",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "team_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "properties": {
+                                        "user_id": {
+                                            "type": "string"
+                                        },
+                                        "team": [
+                                            {
+                                                "team_id": {
+                                                    "type":"string"
+                                                },
+                                                "teamName": {
+                                                    "type": "string"
+                                                },
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "country": {
+                                                    "type": "string"
+                                                },
+                                                "created_at": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "user_id": "95d9913b-13f6-42c7-93b1-bcd7fc07b223",
+                                        "team": [
+                                            {
+                                                "team_id": "83bb6e84-57cb-4ff9-88ef-b0478f6e4fe4",
+                                                "teamName": "teamname sample",
+                                                "city": "city sample",
+                                                "country": "country sample",
+                                                "created_at": "Thu, 10 Jun 2022 22:20:26 GMT"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "User Not Found !"
+                    },
+                    "404": {
+                        "description": "Team Not Found !"
+                    }
+                }
+            }
+        },
+        "/deleteSpecificTeam/{team_id}": {
+            "delete": {
+                "tags": ["Delete a Specific Team"],
+                "summary": "Delete a Specific Team",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "team_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Team Delete With Sucess"
+                    },
+                    "400": {
+                        "description": "User Not Found !"
+                    },
+                    "404": {
+                        "description": "Team Not Found !"
+                    }
+                }
+            }
+        }
     }
 }
