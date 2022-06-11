@@ -1,7 +1,7 @@
 ## API de cadastro de Usuários e Times em memória.
 
 <p align="center">
-<img src="screens/Documentacao_da_Api_times_em_memoria.png" alt="demostração" />
+<img src="screens/documentacao.png" alt="demostração" />
 </p>
 
 ### 💻 Projeto
