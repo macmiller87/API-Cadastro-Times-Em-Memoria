@@ -1,6 +1,8 @@
 ## API de cadastro de Usuários e Times em memória.
 
-#### Está em desenvolvimento 🚀
+<p align="center">
+<img src="screens/Documentação_da_Api_times_em_memoria.png" alt="demostração" />
+</p>
 
 ### 💻 Projeto
 
@@ -36,13 +38,13 @@
 
 - A rota deve receber, pelo header da requisição, uma propriedade `user_id` contendo o `id` do usuário e retornar uma lista com todos os dados do usuário e todos os times cadastrados desse usuário.
 
-#### ListUserSpecifTeam.routes: Get - `/listUserSpecifTeam/:user_id`
+#### ListUserSpecifTeam.routes: Get - `/listUserSpecifTeam/:team_id`
 
-- A rota deve receber, pelo header da requisição, uma propriedade `user_id` contendo o `id` do usuário, e o `team_id` do time que deseja ser consultado no corpo da requisição, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejá válidados.
+- A rota deve receber, pelo header da requisição, uma propriedade `team_id` contendo o `id` do time que deseja ser consultado, e o `user_id` do usuário que efetuo o cadastrado do time a ser consultado, pelo parâmetro de consulta `query`, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejam válidados.
 
-#### DeleteSpecificUserTeam.routes: Delete - `/deleteSpecificTeam/:user_id`
+#### DeleteSpecificUserTeam.routes: Delete - `/deleteSpecificTeam/:team_id`
 
-- A rota deve receber, pelo header da requisição, uma propriedade `user_id` contendo o `id` do usuário, e o `team_id` do time que deseja ser deletado no corpo da requisição, essa rota só pode concluir a exclusão com sucesso, caso os dois parâmetros passados anteriormente sejá válidados.
+- A rota deve receber, pelo header da requisição, uma propriedade `team_id` contendo o `id` do time que deseja ser consultado, e o `user_id` do usuário que efetuo o cadastrado do time a ser consultado, pelo parâmetro de consulta `query`, essa rota só pode concluir a exclusão com sucesso, caso os dois parâmetros passados anteriormente sejam válidados.
 
 ## Para rodar essa aplicação siga os seguintes passos:
 
