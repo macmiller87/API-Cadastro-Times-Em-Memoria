@@ -8,7 +8,7 @@ describe("List Specif User Team", () => {
         const user = await request(app).post("/createUser").send({
             username: "Freddy",
             userAvatar: "Krugger"
-        })
+        });
 
         const userTeam = await request(app).post(`/createUserTeam/${user.body.user.user_id}`).send({
             teamName: "Manchester United F. C",
@@ -16,9 +16,9 @@ describe("List Specif User Team", () => {
             country: "Inglaterra"
         });
 
-        await request(app).get(`/listUserSpecifTeam/${user.body.user.user_id}`).send({
-            team_id: userTeam.body.teams.team_id
-        })
+        await request(app).get(`/listUserSpecifTeam/${userTeam.body.teams.team_id}`).query({
+            user_id: user.body.user.user_id
+        });
     });
 
     it("Should be not able to list User Team, if 'user_id' of the registered User is not the same", async () => {
@@ -26,7 +26,7 @@ describe("List Specif User Team", () => {
         const user = await request(app).post("/createUser").send({
             username: "Json",
             userAvatar: "Voorhees"
-        })
+        });
 
         const userTeam = await request(app).post(`/createUserTeam/${user.body.user.user_id}`).send({
             teamName: "F. C Paris Sant German",
@@ -35,10 +35,10 @@ describe("List Specif User Team", () => {
         });
 
         const listUserTeam = await request(app)
-        .get(`/listUserSpecifTeam/${user.body.user.fake_id}`)
-        .send({
-            team_id: userTeam.body.teams.team_id
-        }).expect(404);
+        .get(`/listUserSpecifTeam/${userTeam.body.teams.team_id}`)
+        .query({
+            user_id: user.body.user.fake_id
+        }).expect(400);
         
         expect(listUserTeam.body).toStrictEqual({ message: "User Not Found !" });
     });
@@ -57,9 +57,9 @@ describe("List Specif User Team", () => {
         });
 
         const listUserTeam = await request(app)
-        .get(`/listUserSpecifTeam/${user.body.user.user_id}`)
-        .send({
-            team_id: userTeam.body.teams.fake_id
+        .get(`/listUserSpecifTeam/${userTeam.body.teams.fake_id}`)
+        .query({
+            user_id: user.body.user.user_id
         }).expect(404);
         
         expect(listUserTeam.body).toStrictEqual({ message: "Team Not Found !" });

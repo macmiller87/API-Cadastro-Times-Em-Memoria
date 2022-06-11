@@ -4,21 +4,21 @@ const arrayUserTeams = require("../utils/arrays/ArrayUserTeam.js");
 
 const deleteSpecificUserTeam = Router();
 
-deleteSpecificUserTeam.delete("/deleteSpecificTeam/:user_id", (request, response) => {
+deleteSpecificUserTeam.delete("/deleteSpecificTeam/:team_id", (request, response) => {
 
-    const { user_id } = request.params;
-    const { team_id } = request.body;
+    const { team_id } = request.params;
+    const { user_id } = request.query;
 
-    const userId = arrayallUsers.find((user) => user.user_id === user_id);
     const teamId = arrayUserTeams.findIndex((team) => team.team_id === team_id);
+    const userId = arrayallUsers.find((user) => user.user_id === user_id);
 
-    if(!userId) {
-
-        return response.status(404).json({ message: "User Not Found !" });
-
-    }else if(teamId === -1) {
+    if(teamId === -1) {
 
         return response.status(404).json({ message: "Team Not Found !" });
+
+    }else if(!userId) {
+
+        return response.status(400).json({ message: "User Not Found !" });
 
     }else {
 

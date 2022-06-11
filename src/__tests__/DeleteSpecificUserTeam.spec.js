@@ -8,7 +8,7 @@ describe("Delete Specif User Team", () => {
         const user = await request(app).post("/createUser").send({
             username: "Godofredo",
             userAvatar: "Fera braba"
-        })
+        });
 
         const userTeam = await request(app).post(`/createUserTeam/${user.body.user.user_id}`).send({
             teamName: "Liverpol F. C.",
@@ -17,9 +17,9 @@ describe("Delete Specif User Team", () => {
         });
 
         const deleteUserSpecificTeam = await request(app)
-        .delete(`/deleteSpecificTeam/${user.body.user.user_id}`)
-        .send({
-            team_id: userTeam.body.teams.team_id
+        .delete(`/deleteSpecificTeam/${userTeam.body.teams.team_id}`)
+        .query({
+            user_id: user.body.user.user_id
         }).expect(201);
 
         expect(deleteUserSpecificTeam.body).toStrictEqual({ message: "Team Delete With Sucess" });
@@ -30,7 +30,7 @@ describe("Delete Specif User Team", () => {
         const user = await request(app).post("/createUser").send({
             username: "Ze Bedeu",
             userAvatar: "Doidera"
-        })
+        });
 
         const userTeam = await request(app).post(`/createUserTeam/${user.body.user.user_id}`).send({
             teamName: "F. C. Barcelona",
@@ -39,10 +39,10 @@ describe("Delete Specif User Team", () => {
         });
 
         const deleteUserSpecificTeam = await request(app)
-        .delete(`/deleteSpecificTeam/${user.body.user.Fake_id}`)
-        .send({
-            team_id: userTeam.body.teams.team_id
-        }).expect(404);
+        .delete(`/deleteSpecificTeam/${userTeam.body.teams.team_id}`)
+        .query({
+            user_id: user.body.user.fake_id
+        }).expect(400);
 
         expect(deleteUserSpecificTeam.body).toStrictEqual({ message: "User Not Found !" });
     });
@@ -52,7 +52,7 @@ describe("Delete Specif User Team", () => {
         const user = await request(app).post("/createUser").send({
             username: "Chapeuzinho",
             userAvatar: "Vermelho"
-        })
+        });
 
         const userTeam = await request(app).post(`/createUserTeam/${user.body.user.user_id}`).send({
             teamName: "F. C. Real Madrid",
@@ -61,9 +61,9 @@ describe("Delete Specif User Team", () => {
         });
 
         const deleteUserSpecificTeam = await request(app)
-        .delete(`/deleteSpecificTeam/${user.body.user.user_id}`)
-        .send({
-            team_id: userTeam.body.teams.fake_id
+        .delete(`/deleteSpecificTeam/${userTeam.body.teams.fake_id}`)
+        .query({
+            user_id: user.body.user.user_id
         }).expect(404);
 
         expect(deleteUserSpecificTeam.body).toStrictEqual({ message: "Team Not Found !" });
